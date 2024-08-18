@@ -74,9 +74,9 @@ const lastMonth = 216000;
         const nLastMonth = await getTotalSupplyAt(rotContract, currentBlock - lastMonth)
         const str = `TOKEN'S BURNING 🥵: 
 Current supply: ${formatLargeNumber(now)}
-Last hour: ${formatLargeNumber(nLastHour)} = <b>${formatterPercentage.format((nLastHour - now) / nLastHour)}</b>
-Last day : ${formatLargeNumber(nLastDay)} = <b>${formatterPercentage.format((nLastDay - now ) / nLastDay)}</b>
-Last month: ${formatLargeNumber(nLastMonth)} = <b>${formatterPercentage.format((nLastMonth - now) / nLastMonth)}</b>
+Last hour: ${formatLargeNumber(now - nLastHour)} = <b>${formatterPercentage.format((nLastHour - now) / nLastHour)}</b>
+Last day : ${formatLargeNumber(now - nLastDay)} = <b>${formatterPercentage.format((nLastDay - now ) / nLastDay)}</b>
+Last month: ${formatLargeNumber(now - nLastMonth)} = <b>${formatterPercentage.format((nLastMonth - now) / nLastMonth)}</b>
 `
         ctx.replyWithHTML(str)
 
