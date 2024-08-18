@@ -74,9 +74,9 @@ const lastMonth = 216000;
         const nLastMonth = await getTotalSupplyAt(rotContract, currentBlock - lastMonth)
         const str = `TOKEN'S BURNING 🥵: 
 <code>Current supply: ${formatLargeNumber(now)} ROT</code>
-<code>Last hour : ${formatLargeNumber(nLastHour - now)} ROT = </code><b>${formatterPercentage.format((nLastHour - now) / nLastHour)}</b>
-<code>Last day  : ${formatLargeNumber(nLastDay - now)} ROT = </code><b>${formatterPercentage.format((nLastDay - now ) / nLastDay)}</b>
-<code>Last month: ${formatLargeNumber(nLastMonth - now)} ROT = </code><b>${formatterPercentage.format((nLastMonth - now) / nLastMonth)}</b>
+<code>Last hour : ${formatLargeNumber(nLastHour - now, 0)} ROT = </code><b>${formatterPercentage.format((nLastHour - now) / nLastHour)}</b>
+<code>Last day  : ${formatLargeNumber(nLastDay - now, 0)} ROT = </code><b>${formatterPercentage.format((nLastDay - now ) / nLastDay)}</b>
+<code>Last month: ${formatLargeNumber(nLastMonth - now, 0)} ROT = </code><b>${formatterPercentage.format((nLastMonth - now) / nLastMonth)}</b>
 `
         ctx.replyWithHTML(str)
 
@@ -87,7 +87,7 @@ const lastMonth = 216000;
         const r = await Promise.all(contractsWhereTokensAreStuck.map(a => getBalance(maggotContract, a)))
         const total = Number(r.reduce((a, b) => a + b) / BigInt(1e18));
         const percent = total / totalSupply
-        ctx.reply(`“Total maggot stuck in contracts (irretrievable): ${formatLargeNumber(total, 0)} MAGGOT (${formatterPercentage.format(percent)})`)
+        ctx.reply(`Total maggot stuck in contracts (irretrievable): ${formatLargeNumber(total, 0)} MAGGOT (${formatterPercentage.format(percent)})`)
     });
 
     bot.launch({
