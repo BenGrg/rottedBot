@@ -32,7 +32,7 @@ const oracleAddy = "0x48dc32eca58106f06b41de514f29780ffa59c279"
 const maggotAddy = "0x163c754eF4D9C03Fc7Fa9cf6Dd43bFc760E6Ce89"
 
 const rotContract = new ethers.Contract(rotToken, abiErc20, provider);
-const maggotContract = new ethers.Contract(rotToken, abiErc20, provider);
+const maggotContract = new ethers.Contract(maggotAddy, abiErc20, provider);
 const oracleContract = new ethers.Contract(oracleAddy, abiOracle, provider);
 
 
