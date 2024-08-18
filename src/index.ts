@@ -43,6 +43,7 @@ const lastMonth = 216000;
 
 
     bot.command('price', async (ctx) => {
+        console.log("/price")
         const currentBlock = await provider.getBlockNumber()
         const currentPrice = await getPriceAt(currentBlock)
         const nLastHour = await getPriceAt(currentBlock - lastHour)
@@ -55,12 +56,14 @@ const lastMonth = 216000;
         ctx.replyWithHTML(str)
     });
     bot.command('mcap', async (ctx) => {
+        console.log("/mcap")
         const supply = await getTotalSupply()
         const currentBlock = await provider.getBlockNumber()
         const price = await getPriceAt(currentBlock)
         ctx.replyWithHTML(`Current mcap: ${formatLargeNumber(price * supply, 0)}$`)
     } );
     bot.command('deflation', async (ctx) => {
+        console.log("/deflation")
         const currentBlock = await provider.getBlockNumber()
         const now = await getTotalSupply()
         const nLastHour = await getTotalSupplyAt(currentBlock - lastHour)
@@ -76,6 +79,7 @@ Last month: ${formatLargeNumber(nLastMonth)} = <b>${formatterPercentage.format((
 
     });
     bot.command('stuck', async (ctx) => {
+        console.log("/stuck")
         const totalSupply = await getTotalSupply()
         const r = await Promise.all(contractsWhereTokensAreStuck.map(a => getBalance(a)))
         const total = Number(r.reduce((a, b) => a + b) / BigInt(1e18));
