@@ -87,7 +87,7 @@ const lastMonth = 216000;
         const r = await Promise.all(contractsWhereTokensAreStuck.map(a => getBalance(maggotContract, a)))
         const total = Number(r.reduce((a, b) => a + b) / BigInt(1e18));
         const percent = total / totalSupply
-        ctx.reply(`Total maggot stuck: ${formatLargeNumber(total, 0)} MAGGOT (${formatterPercentage.format(percent)})`)
+        ctx.reply(`“Total maggot stuck in contracts (irretrievable): ${formatLargeNumber(total, 0)} MAGGOT (${formatterPercentage.format(percent)})`)
     });
 
     bot.launch({
